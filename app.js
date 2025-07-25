@@ -9,6 +9,7 @@ const emojis = {
 };
 
 function play() {
+    if (gameOver) return;
   let compChoice = choices[Math.floor(Math.random() * 3)]; //choices.length we can also use this
   let result = "";
 
@@ -36,3 +37,10 @@ function resetGame() {
   document.getElementById("result").innerHTML = "Game reset! 🧹";
   document.getElementById("score").innerHTML = `Score: You: ${userScore}, Computer: ${compScore}`;
 }
+// Game Over after 1 minute
+let gameOver = false;
+
+setTimeout(() => {
+  gameOver = true;
+  document.getElementById("result").innerHTML = "⏰ Time's up! Game Over!";
+}, 60000); // 60000ms = 1 minute
